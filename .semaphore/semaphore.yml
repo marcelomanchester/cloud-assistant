@@ -11,8 +11,8 @@ blocks:
         - name: docker build
           commands:
             - checkout
-            - 'docker build -t devmarcelo/cloud-assistent:latest .'
-            - 'docker push devmarcelo/cloud-assistent:latest'
+            - 'docker build -t devmarcelo/cloud-assistent:$SEMAPHORE_GIT_BRANCH .'
+            - 'docker push devmarcelo/cloud-assistent:$SEMAPHORE_GIT_BRANCH'
       secrets:
         - name: dockerhub-secrets
       prologue:
