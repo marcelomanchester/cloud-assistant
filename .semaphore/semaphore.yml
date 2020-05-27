@@ -1,0 +1,20 @@
+version: v1.0
+name: Docker
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+blocks:
+  - name: Build
+    task:
+      jobs:
+        - name: docker build
+          commands:
+            - checkout
+            - 'docker build -t devmarcelo/cloud-assistent:$SEMAPHORE_GIT_BRANCH .'
+            - 'docker push devmarcelo/cloud-assistent:$SEMAPHORE_GIT_BRANCH'
+      secrets:
+        - name: dockerhub-secrets
+      prologue:
+        commands:
+          - 'echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin'
