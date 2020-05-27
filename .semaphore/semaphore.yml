@@ -13,3 +13,8 @@ blocks:
             - checkout
             - 'docker build -t devmarcelo/cloud-assistent:latest .'
             - 'docker push devmarcelo/cloud-assistent:latest'
+      secrets:
+        - name: dockerhub-secrets
+      prologue:
+        commands:
+          - 'echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin'
