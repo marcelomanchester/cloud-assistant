@@ -11,5 +11,5 @@ blocks:
         - name: docker build
           commands:
             - checkout
-            - 'docker build -t devmarcelo/cloudassistant:latest .'
-            - 'docker push devmarcelo/cloudassistant:latest'
+            - 'docker build -t devmarcelo/cloud-assistent:latest .'
+            - 'docker push devmarcelo/cloud-assistent:latest'
